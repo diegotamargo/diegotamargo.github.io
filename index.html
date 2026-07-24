@@ -421,7 +421,7 @@
     <div class="sheet">
       <div class="section-head">
         <h2 class="section-title">Selected projects</h2>
-        <span class="sheet-label mono">3 SHEETS</span>
+        <span class="sheet-label mono">2 SHEETS</span>
       </div>
 
       <div class="projects">
@@ -443,23 +443,10 @@
             <span class="n mono">02</span><span class="mono">GEOSPATIAL / CV</span>
           </div>
           <div>
-            <h3 class="project-title">Orthophoto Vectorization Pipeline</h3>
-            <p class="project-desc">A system I'm designing to turn Spain's PNOA aerial imagery into clean, georeferenced vector layers for three things: buildings, roadway, and sidewalks. Rather than one model for everything, each class gets its own approach — building polygons cross-checked against the cadastre, the roadway traced as a graph so it survives cars and shadows, and sidewalks segmented properly since you can't just infer them from the space between road and facade. LiDAR and the infrared band help with occlusion and telling ground from rooftops. It's still in development and not deployed yet; the segmentation models need more GPU memory than I have on hand, so for now the focus is on the design and the data pipeline.</p>
+            <h3 class="project-title">OrtophotoSegmentation</h3>
+            <p class="project-desc">An end-to-end deep learning pipeline that turns PNOA orthophotos into CAD-ready geometry: closed building footprints and paired open road edges. Large GeoTIFFs are processed box by box and exported separately and as one merged, georeferenced DXF. <a href="https://github.com/diegotamargo/OrtophotoSegmentation" target="_blank" rel="noopener">View source ↗</a></p>
             <div class="project-tags mono">
-              <span>Segmentation</span><span>FastAPI</span><span>torchgeo</span><span>PNOA / LiDAR</span><span>geopandas</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project">
-          <div class="project-index">
-            <span class="n mono">03</span><span class="mono">CAD TOOLING</span>
-          </div>
-          <div>
-            <h3 class="project-title">DXF Normalization Tool</h3>
-            <p class="project-desc">A desktop tool that tidies up messy CAD layer structures, folding them down to a standard set. The rules live in a YAML file rather than in the code, so they're easy to change. It runs as a Windows app with a system tray icon, and I've prepared it for release under an MIT license.</p>
-            <div class="project-tags mono">
-              <span>Python</span><span>FastAPI</span><span>YAML rules engine</span><span>Open source</span>
+              <span>PyTorch</span><span>Rasterio</span><span>GeoPandas</span><span>DXF / AutoCAD</span>
             </div>
           </div>
         </article>
