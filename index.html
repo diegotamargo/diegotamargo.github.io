@@ -137,6 +137,11 @@
   .hero{
     position: relative;
     padding: clamp(56px, 10vw, 108px) 0 clamp(48px, 8vw, 84px);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    pointer-events:none;
     background-image:
       linear-gradient(var(--line) 1px, transparent 1px),
       linear-gradient(to right, var(--line) 1px, transparent 1px);
@@ -147,6 +152,7 @@
   }
   .hero-content{
     position: relative;
+    z-index: 1;
     max-width: var(--max);
     margin:0 auto;
     padding: 0 var(--gutter);
@@ -181,13 +187,13 @@
     margin-top: 34px;
     display:flex; flex-wrap:wrap; gap: 10px 28px;
     font-size: 12.5px;
-    color: var(--muted);
+    color: var(--ink);
   }
   .hero-meta span{ display:flex; align-items:center; gap:7px; }
   .hero-meta span::before{
     content:"";
     width: 5px; height: 5px;
-    background: var(--line-strong);
+    background: var(--accent);
     display:inline-block;
   }
   .cta-row{
@@ -254,8 +260,12 @@
     font-size: 12px;
     padding: 6px 10px;
     border: 1px solid var(--line-strong);
-    color: var(--muted);
+    color: var(--ink);
     background: var(--paper-raised);
+  }
+  .stack-list li.br{
+    flex-basis: 100%;
+    height: 0; padding: 0; border: none; background: none;
   }
   .stack-title{
     font-size: 12px;
@@ -306,6 +316,18 @@
     max-width: 62ch;
     font-size: 0.98rem;
   }
+  .project-link{
+    display:inline-flex; align-items:center; gap:6px;
+    margin-top: 14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent-ink);
+    text-decoration:none;
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 2px;
+    transition: border-color .15s ease;
+  }
+  .project-link:hover{ border-bottom-color: var(--accent); }
   .project-tags{
     margin-top: 16px;
     display:flex; flex-wrap:wrap; gap: 7px;
@@ -383,7 +405,7 @@
       <div class="hero-meta mono">
         <span>Oviedo, Spain</span>
         <span>PMO &amp; AI Dept · INGECA</span>
-        <span>Python · FastAPI · AI / RAG</span>
+        <span>Python · Data / ML · AI / RAG</span>
       </div>
     </div>
   </section>
@@ -396,20 +418,19 @@
       </div>
       <div class="about-grid">
         <div>
-          <p>I'm in my final year of Industrial Organization Engineering at the University of Oviedo, and I intern with the PMO &amp; AI department at INGECA, an engineering and quality consultancy. My job there is to build the internal software the engineering and admin teams use to get through their day.</p>
-          <p>The work is a mix of automation and applied AI. I've built a retrieval system for auditing compliance frameworks, a tool that pulls features out of aerial imagery, and various pipelines that take messy geospatial or document data and hand a non-technical colleague something they can actually use. Most of it ships as a small Windows app so it slots into the existing setup without anyone having to think about it. On the side, I train AI models as a bilingual annotator, checking large language model outputs for consistency and errors.</p>
+          <p>I'm in my final year of Industrial Organization Engineering at the University of Oviedo. The parts I keep coming back to are data science, supply chain and operations management. Right now I intern with the PMO &amp; AI department at INGECA, an engineering and quality consultancy, building the internal tools the engineering and admin teams use.</p>
+          <p>The first two projects below are personal. I built them because the subject interests me and I wanted to see how far my own knowledge would take me: forecasting turbine failures, and a statistical study of energy mix and emissions. The other two come from INGECA, where the problems are closer to quality and operations. The retrieval system over compliance documents is in daily use; the pipeline that turns aerial imagery into CAD drawings is still a prototype.</p>
         </div>
         <div>
           <span class="stack-title mono">STACK</span>
           <ul class="stack-list mono">
             <li>Python</li>
-            <li>FastAPI</li>
+            <li>pandas</li>
+            <li>scikit-learn</li>
             <li>LlamaIndex</li>
-            <li>RAG / BM25</li>
-            <li>SAM / GIS</li>
-            <li>R</li>
+            <li class="br"></li>
             <li>MATLAB</li>
-            <li>PyInstaller</li>
+            <li>R</li>
             <li>Git</li>
           </ul>
         </div>
@@ -421,32 +442,61 @@
     <div class="sheet">
       <div class="section-head">
         <h2 class="section-title">Selected projects</h2>
-        <span class="sheet-label mono">2 SHEETS</span>
+        <span class="sheet-label mono">4 SHEETS</span>
       </div>
 
       <div class="projects">
         <article class="project">
           <div class="project-index">
-            <span class="n mono">01</span><span class="mono">RAG SYSTEM</span>
+            <span class="n mono">01</span><span class="mono">STATISTICS</span>
           </div>
           <div>
-            <h3 class="project-title">NormaINGECA</h3>
-            <p class="project-desc">A search tool that lets engineers ask questions about compliance and regulatory documents in plain language instead of digging through PDFs. It pairs BM25 keyword search with vector retrieval and merges the two using Reciprocal Rank Fusion. The embedding model runs locally, picked so it works on ordinary office machines. It's now installed on more than 50 workstations as a standalone Windows app.</p>
+            <h3 class="project-title">Energy Mix &amp; CO&#8322; Analysis</h3>
+            <p class="project-desc">A statistical study of how a country&rsquo;s energy mix relates to its emissions and its economic output, across 10 economies from 2000 to 2020 on Our World in Data figures. Multiple regression, t-tests and confidence intervals in Excel; K-means clustering and ARIMA forecasting in R. Coal comes out as the strongest single driver of emissions, consistently outweighing renewable adoption, and the clustering separates the countries into four profiles: a Western European core, the US as a high-consumption outlier, France as a nuclear one, and China with Bulgaria as high-carbon industrializing economies.</p>
+            <a class="project-link" href="https://github.com/diegotamargo/Energy-Mix-CO2-Analysis" target="_blank" rel="noopener">github.com/diegotamargo/Energy-Mix-CO2-Analysis &#8599;</a>
             <div class="project-tags mono">
-              <span>LlamaIndex</span><span>BM25 + RRF</span><span>Gemini API</span><span>PyInstaller</span>
+              <span>R</span><span>K-means</span><span>ARIMA</span><span>Regression</span>
             </div>
           </div>
         </article>
 
         <article class="project">
           <div class="project-index">
-            <span class="n mono">02</span><span class="mono">GEOSPATIAL / CV</span>
+            <span class="n mono">02</span><span class="mono">PREDICTIVE MAINT.</span>
+          </div>
+          <div>
+            <h3 class="project-title">Wind Turbine Failure Predictor</h3>
+            <p class="project-desc">Early fault detection on real SCADA data: will a component fail within the next 14 days, while the turbine is still running normally? Trained on the EDP open wind farm &mdash; 5 onshore turbines in Portugal, 10-minute SCADA plus a logbook of confirmed failures. Every sensor is recast as its deviation from that turbine&rsquo;s own healthy baseline, and validation uses GroupKFold by failure event, so no fold is ever tested on a failure it has seen. The finding worth reporting is that failures are not equally predictable: gearbox failures are caught reliably about two weeks ahead (ROC-AUC 0.99), while generator and hydraulic ones leave almost no fingerprint at that horizon. The whole project is one notebook, pandas and scikit-learn only.</p>
+            <a class="project-link" href="https://github.com/diegotamargo/Wind-turbine-failure-predictor" target="_blank" rel="noopener">github.com/diegotamargo/Wind-turbine-failure-predictor &#8599;</a>
+            <div class="project-tags mono">
+              <span>pandas</span><span>scikit-learn</span><span>Random Forest</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-index">
+            <span class="n mono">03</span><span class="mono">GEOSPATIAL / CV</span>
           </div>
           <div>
             <h3 class="project-title">OrtophotoSegmentation</h3>
-            <p class="project-desc">An end-to-end deep learning pipeline that turns PNOA orthophotos into CAD-ready geometry: closed building footprints and paired open road edges. Large GeoTIFFs are processed box by box and exported separately and as one merged, georeferenced DXF. <a href="https://github.com/diegotamargo/OrtophotoSegmentation" target="_blank" rel="noopener">View source ↗</a></p>
+            <p class="project-desc">Turns a georeferenced PNOA orthophoto into a CAD drawing. A U-Net (EfficientNet-B4, OpenEarthMap weights) segments buildings and roads tile by tile and blends the overlap halos so seams come out as gradients instead of steps. The masks are cleaned with morphology expressed in metres, then vectorized into closed polylines: buildings orthogonally regularized, roads as closed kerb rings with real curves carried as arcs, so intersections close by construction and blocks come out as holes. It exports DXF, GeoPackage and a QC preview in the original UTM coordinates, splitting a full sheet into boxes so a 25&nbsp;cm MTN25 tile fits in memory. Runs on Colab or on local COG/GeoTIFF files. MIT licensed.</p>
+            <a class="project-link" href="https://github.com/diegotamargo/OrtophotoSegmentation" target="_blank" rel="noopener">github.com/diegotamargo/OrtophotoSegmentation &#8599;</a>
             <div class="project-tags mono">
-              <span>PyTorch</span><span>Rasterio</span><span>GeoPandas</span><span>DXF / AutoCAD</span>
+              <span>Jupyter Notebook</span><span>U-Net</span><span>PyTorch</span><span>GeoPackage</span><span>DXF / AutoCAD</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-index">
+            <span class="n mono">04</span><span class="mono">RAG SYSTEM</span>
+          </div>
+          <div>
+            <h3 class="project-title">NormaINGECA</h3>
+            <p class="project-desc">A search tool that lets engineers ask questions about compliance and regulatory documents in plain language instead of digging through PDFs. Built on LlamaIndex, it pairs BM25 keyword search with vector retrieval and merges the two with Reciprocal Rank Fusion, backed by a FAISS index. Nothing runs locally: embeddings, reranking and generation all go through NVIDIA&rsquo;s developer APIs &mdash; Nemotron for embedding and reranking, Llama 8B for the answer &mdash; which keeps it light enough for ordinary office machines. It&rsquo;s now installed on more than 50 workstations as a standalone Windows app.</p>
+            <div class="project-tags mono">
+              <span>LlamaIndex</span><span>BM25 + RRF</span><span>FAISS</span><span>Nemotron + Llama 8B</span>
             </div>
           </div>
         </article>
