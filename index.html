@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diego Tamargo García — Developer</title>
-<meta name="description" content="Diego Tamargo García — Developer building internal tools, automation and AI systems for engineering teams.">
+<title>Diego Tamargo García, Developer</title>
+<meta name="description" content="Diego Tamargo García builds internal tools, automation and AI systems for engineering teams.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -381,7 +381,7 @@
 </head>
 <body>
 
-<div class="ruler"><div class="ruler-inner mono"><span>DIEGO TAMARGO GARCÍA</span><span>PORTFOLIO / 2026</span></div></div>
+<div class="ruler"><div class="ruler-inner mono"><span>PORTFOLIO / 2026</span><span>OVIEDO, SPAIN</span></div></div>
 
 <header class="site">
   <div class="nav">
@@ -399,13 +399,13 @@
 <main>
   <section class="hero" style="border-top:none;">
     <div class="hero-content">
-      <span class="eyebrow"><span class="dot"></span>PMO &amp; AI Intern · Industrial Organization Engineering</span>
+      <span class="eyebrow"><span class="dot"></span>PMO &amp; AI Intern · INGECA</span>
       <h1 class="title">Diego Tamargo García</h1>
-      <p class="subhead">I build the internal software engineering teams use every day: automation, document tools, and AI systems that get real work done.</p>
+      <p class="subhead">Industrial Organization Engineering, focused on data science and machine learning: statistical models built to support operational decisions. Interested in the energy sector.</p>
       <div class="hero-meta mono">
-        <span>Oviedo, Spain</span>
-        <span>PMO &amp; AI Dept · INGECA</span>
-        <span>Python · Data / ML · AI / RAG</span>
+        <span>University of Oviedo</span>
+        <span>Python · R · SQL</span>
+        <span>Data / ML · AI / RAG</span>
       </div>
     </div>
   </section>
@@ -419,7 +419,7 @@
       <div class="about-grid">
         <div>
           <p>I'm in my final year of Industrial Organization Engineering at the University of Oviedo. The parts I keep coming back to are data science, supply chain and operations management. Right now I intern with the PMO &amp; AI department at INGECA, an engineering and quality consultancy, building the internal tools the engineering and admin teams use.</p>
-          <p>The first two projects below are personal. I built them because the subject interests me and I wanted to see how far my own knowledge would take me: forecasting turbine failures, and a statistical study of energy mix and emissions. The other two come from INGECA, where the problems are closer to quality and operations. The retrieval system over compliance documents is in daily use; the pipeline that turns aerial imagery into CAD drawings is still a prototype.</p>
+          <p>The first two projects below are personal. I built them because the subject interests me and I wanted to see how far my own knowledge would take me: a rebuild of an old statistics project on energy mix and emissions, and predicting turbine failures before they happen. Both ended up mostly being lessons in what the data will not tell you. The other two come from INGECA, where the problems are closer to quality and operations. The retrieval system over compliance documents is in daily use; the pipeline that turns aerial imagery into CAD drawings is still a prototype.</p>
         </div>
         <div>
           <span class="stack-title mono">STACK</span>
@@ -429,8 +429,9 @@
             <li>scikit-learn</li>
             <li>LlamaIndex</li>
             <li class="br"></li>
-            <li>MATLAB</li>
             <li>R</li>
+            <li>DuckDB / SQL</li>
+            <li>MATLAB</li>
             <li>Git</li>
           </ul>
         </div>
@@ -452,10 +453,10 @@
           </div>
           <div>
             <h3 class="project-title">Energy Mix &amp; CO&#8322; Analysis</h3>
-            <p class="project-desc">A statistical study of how a country&rsquo;s energy mix relates to its emissions and its economic output, across 10 economies from 2000 to 2020 on Our World in Data figures. Multiple regression, t-tests and confidence intervals in Excel; K-means clustering and ARIMA forecasting in R. Coal comes out as the strongest single driver of emissions, consistently outweighing renewable adoption, and the clustering separates the countries into four profiles: a Western European core, the US as a high-consumption outlier, France as a nuclear one, and China with Bulgaria as high-carbon industrializing economies.</p>
+            <p class="project-desc">A rebuild of an old statistics course project, this time on 79 countries instead of five and with every model checked out of sample. Our World in Data figures go through a four-layer DuckDB pipeline, then get clustered and forecast in R. K-means on fuel shares alone splits the countries into gas-and-oil, nuclear-diversified, coal-intensive and renewables-intensive groups. The part I did not expect: the fuel mix decides how dirty each unit of energy is (0.263 t CO&#8322;/MWh for the coal group against 0.170 for the renewables one) and says almost nothing about emissions per head, which follow how much energy a country burns (r = 0.75) rather than how it makes it (r = 0.01). ARIMA, the centrepiece of the original project, came out worst of the four forecasters: a plain random walk beat it for 41 of the 79 countries.</p>
             <a class="project-link" href="https://github.com/diegotamargo/Energy-Mix-CO2-Analysis" target="_blank" rel="noopener">github.com/diegotamargo/Energy-Mix-CO2-Analysis &#8599;</a>
             <div class="project-tags mono">
-              <span>R</span><span>K-means</span><span>ARIMA</span><span>Regression</span>
+              <span>R</span><span>DuckDB / SQL</span><span>K-means</span><span>Rolling-origin CV</span>
             </div>
           </div>
         </article>
@@ -466,7 +467,7 @@
           </div>
           <div>
             <h3 class="project-title">Wind Turbine Failure Predictor</h3>
-            <p class="project-desc">Early fault detection on real SCADA data: will a component fail within the next 14 days, while the turbine is still running normally? Trained on the EDP open wind farm &mdash; 5 onshore turbines in Portugal, 10-minute SCADA plus a logbook of confirmed failures. Every sensor is recast as its deviation from that turbine&rsquo;s own healthy baseline, and validation uses GroupKFold by failure event, so no fold is ever tested on a failure it has seen. The finding worth reporting is that failures are not equally predictable: gearbox failures are caught reliably about two weeks ahead (ROC-AUC 0.99), while generator and hydraulic ones leave almost no fingerprint at that horizon. The whole project is one notebook, pandas and scikit-learn only.</p>
+            <p class="project-desc">Early fault detection on real SCADA data: will a component fail within the next 14 days, while the turbine is still running normally? The data is the CARE To Compare set for the EDP open wind farm, five onshore turbines in Portugal, 10-minute SCADA readings plus a logbook of confirmed failures. Every sensor is recast as its deviation from that turbine&rsquo;s own healthy baseline, and validation uses GroupKFold by failure event, so no fold is ever tested on a failure it has already seen. Taken as a whole the model is unremarkable: 0.68 ROC-AUC for a random forest against 0.61 for logistic regression. Split by component it gets interesting. Gearbox failures show up two weeks out at 0.98 ROC-AUC, while generator ones sit at 0.49, which is a coin flip. With about twelve confirmed failures in the whole farm that points a direction rather than settling anything. One notebook, pandas and scikit-learn only.</p>
             <a class="project-link" href="https://github.com/diegotamargo/Wind-turbine-failure-predictor" target="_blank" rel="noopener">github.com/diegotamargo/Wind-turbine-failure-predictor &#8599;</a>
             <div class="project-tags mono">
               <span>pandas</span><span>scikit-learn</span><span>Random Forest</span>
@@ -480,10 +481,10 @@
           </div>
           <div>
             <h3 class="project-title">OrtophotoSegmentation</h3>
-            <p class="project-desc">Turns a georeferenced PNOA orthophoto into a CAD drawing. A U-Net (EfficientNet-B4, OpenEarthMap weights) segments buildings and roads tile by tile and blends the overlap halos so seams come out as gradients instead of steps. The masks are cleaned with morphology expressed in metres, then vectorized into closed polylines: buildings orthogonally regularized, roads as closed kerb rings with real curves carried as arcs, so intersections close by construction and blocks come out as holes. It exports DXF, GeoPackage and a QC preview in the original UTM coordinates, splitting a full sheet into boxes so a 25&nbsp;cm MTN25 tile fits in memory. Runs on Colab or on local COG/GeoTIFF files. MIT licensed.</p>
+            <p class="project-desc">Turns a georeferenced PNOA orthophoto into a CAD drawing. A U-Net (EfficientNet-B4, OpenEarthMap weights) segments buildings tile by tile, averaging over the eight square symmetries and blending the overlap halos so seams come out as gradients instead of steps. The masks are cleaned with morphology expressed in metres, then vectorized into closed polylines and squared off to right angles. It exports DXF, GeoPackage and a QC preview in the original UTM coordinates, splitting a full sheet into boxes so a 25&nbsp;cm MTN25 tile fits in memory. The project is partly shut down for lack of use. It stays on the shelf in case new urban areas need tracing.</p>
             <a class="project-link" href="https://github.com/diegotamargo/OrtophotoSegmentation" target="_blank" rel="noopener">github.com/diegotamargo/OrtophotoSegmentation &#8599;</a>
             <div class="project-tags mono">
-              <span>Jupyter Notebook</span><span>U-Net</span><span>PyTorch</span><span>GeoPackage</span><span>DXF / AutoCAD</span>
+              <span>Python</span><span>U-Net</span><span>PyTorch</span><span>GeoPackage</span><span>DXF / AutoCAD</span>
             </div>
           </div>
         </article>
@@ -494,7 +495,7 @@
           </div>
           <div>
             <h3 class="project-title">NormaINGECA</h3>
-            <p class="project-desc">A search tool that lets engineers ask questions about compliance and regulatory documents in plain language instead of digging through PDFs. Built on LlamaIndex, it pairs BM25 keyword search with vector retrieval and merges the two with Reciprocal Rank Fusion, backed by a FAISS index. Nothing runs locally: embeddings, reranking and generation all go through NVIDIA&rsquo;s developer APIs &mdash; Nemotron for embedding and reranking, Llama 8B for the answer &mdash; which keeps it light enough for ordinary office machines. It&rsquo;s now installed on more than 50 workstations as a standalone Windows app.</p>
+            <p class="project-desc">A search tool that lets engineers ask questions about compliance and regulatory documents in plain language instead of digging through PDFs. Built on LlamaIndex, it pairs BM25 keyword search with vector retrieval and merges the two with Reciprocal Rank Fusion, backed by a FAISS index. Nothing runs locally. Embeddings, reranking and generation all go through NVIDIA&rsquo;s developer APIs, with Nemotron doing the embedding and reranking and Llama 8B writing the answer, which keeps it light enough for ordinary office machines. It&rsquo;s now installed on more than 50 workstations as a standalone Windows app.</p>
             <div class="project-tags mono">
               <span>LlamaIndex</span><span>BM25 + RRF</span><span>FAISS</span><span>Nemotron + Llama 8B</span>
             </div>
@@ -522,7 +523,7 @@
           </div>
           <div style="display:flex; flex-direction:column; align-items:flex-start; gap:16px;">
             <a class="btn btn-primary" href="CV_Diego_Tamargo.pdf" download>Download CV (PDF) ↓</a>
-            <p class="footer-note">Based in Oviedo, Spain. Usually building something in Python, for people who'd rather not think about the tool at all.</p>
+            <p class="footer-note">Based in Oviedo, Spain.</p>
           </div>
         </div>
       </div>
@@ -532,7 +533,7 @@
 
 <div class="bottom-bar mono">
   <span>© <span id="year"></span> Diego Tamargo García</span>
-  <span>Built with HTML / CSS — hosted on GitHub Pages</span>
+  <span>Built with HTML / CSS, hosted on GitHub Pages</span>
 </div>
 
 <script>
